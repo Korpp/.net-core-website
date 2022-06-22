@@ -1,0 +1,60 @@
+﻿@page
+@model MyWebPage.Pages.Applicant.Experience.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="ExperienceCreate">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantWorkExperience[0].Company)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantWorkExperience[0].Employer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantWorkExperience[0].Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantWorkExperience[0].StartDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApplicantWorkExperience[0].EndDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ApplicantWorkExperience) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                <a asp-page="./ExperienceEdit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./ExperienceDetails" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./ExperienceDelete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

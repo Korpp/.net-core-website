@@ -1,0 +1,52 @@
+﻿@page "{id:int}"
+@model MyWebPage.Pages.Applicant.Experience.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ApplicantWorkExperience</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.Company)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.Company)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.Employer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.Employer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.EndDate)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="ApplicantWorkExperience.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./ExperienceIndex">Back to List</a>
+    </form>
+</div>

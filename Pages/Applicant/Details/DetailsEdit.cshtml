@@ -1,0 +1,85 @@
+﻿@page "{id:int}"
+@model MyWebPage.Pages.Applicant.Details.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>ApplicantDetails</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ApplicantDetails.Id" />
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.profileImage" class="control-label"></label>
+                <input asp-for="ApplicantDetails.profileImage" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.profileImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.FirstName" class="control-label"></label>
+                <input asp-for="ApplicantDetails.FirstName" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.LastName" class="control-label"></label>
+                <input asp-for="ApplicantDetails.LastName" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.Age" class="control-label"></label>
+                <input asp-for="ApplicantDetails.Age" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.Age" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.Address" class="control-label"></label>
+                <input asp-for="ApplicantDetails.Address" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.PostalCode" class="control-label"></label>
+                <input asp-for="ApplicantDetails.PostalCode" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.PostalCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.City" class="control-label"></label>
+                <input asp-for="ApplicantDetails.City" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.Phonenumber" class="control-label"></label>
+                <input asp-for="ApplicantDetails.Phonenumber" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.Phonenumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.Email" class="control-label"></label>
+                <input asp-for="ApplicantDetails.Email" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.LinkedIn" class="control-label"></label>
+                <input asp-for="ApplicantDetails.LinkedIn" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.LinkedIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantDetails.GitHub" class="control-label"></label>
+                <input asp-for="ApplicantDetails.GitHub" class="form-control" />
+                <span asp-validation-for="ApplicantDetails.GitHub" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./DetailsIndex">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

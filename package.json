@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "cldr-data": "^36.0.1",
+    "globalize": "^1.7.0",
+    "iana-tz-data": "^2019.1.0",
+    "jquery-validation": "^1.19.4",
+    "jquery-validation-globalize": "^0.1.1",
+    "mdb-ui-kit": "^4.2.0"
+  }
+}

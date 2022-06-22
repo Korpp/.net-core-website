@@ -1,0 +1,31 @@
+﻿@page "{id:int}"
+@model MyWebPage.Pages.Applicant.Skills.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ApplicantSkills</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantSkills.Skill)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantSkills.Skill)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantSkills.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantSkills.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./SkillsEdit" asp-route-id="@Model.ApplicantSkills?.Id">Edit</a> |
+    <a asp-page="./SkillsIndex">Back to List</a>
+</div>

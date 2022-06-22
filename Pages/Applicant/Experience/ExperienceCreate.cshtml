@@ -1,0 +1,54 @@
+﻿@page
+@model MyWebPage.Pages.Applicant.Experience.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>ApplicantWorkExperience</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ApplicantWorkExperience.Company" class="control-label"></label>
+                <input asp-for="ApplicantWorkExperience.Company" class="form-control" />
+                <span asp-validation-for="ApplicantWorkExperience.Company" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantWorkExperience.Employer" class="control-label"></label>
+                <input asp-for="ApplicantWorkExperience.Employer" class="form-control" />
+                <span asp-validation-for="ApplicantWorkExperience.Employer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantWorkExperience.Description" class="control-label"></label>
+                <input asp-for="ApplicantWorkExperience.Description" class="form-control" />
+                <span asp-validation-for="ApplicantWorkExperience.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantWorkExperience.StartDate" class="control-label"></label>
+                <input asp-for="ApplicantWorkExperience.StartDate" class="form-control" />
+                <span asp-validation-for="ApplicantWorkExperience.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicantWorkExperience.EndDate" class="control-label"></label>
+                <input asp-for="ApplicantWorkExperience.EndDate" class="form-control" />
+                <span asp-validation-for="ApplicantWorkExperience.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="ExperienceIndex">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

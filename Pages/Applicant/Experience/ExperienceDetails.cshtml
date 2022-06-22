@@ -1,0 +1,49 @@
+﻿@page "{id:int}"
+@model MyWebPage.Pages.Applicant.Experience.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ApplicantWorkExperience</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.Company)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.Company)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.Employer)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.Employer)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.StartDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.StartDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicantWorkExperience.EndDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApplicantWorkExperience.EndDate)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.ApplicantWorkExperience?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

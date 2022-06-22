@@ -1,0 +1,30 @@
+﻿@page
+@model MyWebPage.Pages.Admin.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<div class="row text-center">
+    @foreach (var file in Model.File)
+    {
+        var imagePath = "";
+        @if (file != null)
+        {
+            imagePath = @"images\" + file.FileName;
+        }
+        <div class="col-lg-4 mb-5">
+            <div class="d-block border shadow bg-white">
+                <div class="border-bottom">
+                    <img class="w-25 h-25 mb-3 mt-3" src="@imagePath" alt="Sample Photo" />
+                </div>
+
+            </div>
+        </div>
+    }
+</div>

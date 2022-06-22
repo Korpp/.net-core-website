@@ -1,0 +1,220 @@
+﻿@page
+@model MyWebPage.Pages.Applicant.IndexModel
+
+@{
+    ViewData["Title"] = "Applicant";
+}
+<h1>Applicant info</h1>
+<div class="container-fluid align-content-center row p-4">
+    <article class="float-start wrapper mw-50 mh-100">
+        <div class="border bg-white h-100 w-100">
+            @foreach (var item in Model.Details)
+            {
+                var imagePath = "";
+                if (item.profileImage != null)
+                {
+                    imagePath = @"images\" + item.profileImage;
+                }
+
+                <div class="border-bottom">
+                        <div class="mt-4 ms-4 w-100 h-auto label">
+                            <div>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <a asp-page="./Details/DetailsIndex">Edit</a>
+                            }
+                            else
+                            {
+                                <p>Log in to edit</p>
+                            }
+                            </div>
+                            <div>
+                            <img class="w-15 h-15 rounded-circle d-inline-block" src="@imagePath" alt="Sample Photo" />
+                            <h2 class="text-center d-inline-block">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <ul class="user-list">
+                            <li class="user-list-item border-bottom">
+                                <div>image</div>
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.profileImage)
+                                </div>
+                            </li>
+                            <li class="user-list-item border-bottom">
+                                <div>Age</div>
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.Age)
+                                </div>
+                            </li>
+                            <li class="user-list-item border-bottom">
+                                <div>Address</div>
+                                <div>
+                                    @Html.DisplayFor(modelItem => item.Address)
+                                </div>
+                            </li>
+                            <li class="user-list-item border-bottom">
+                                <div>Postal code</div>
+                                <div>@Html.DisplayFor(modelItem => item.PostalCode)</div>
+                            </li>
+                            <li class="user-list-item border-bottom">
+                                <div>City</div>
+                                <div>@Html.DisplayFor(modelItem => item.City)</div>
+                            </li>
+                            <li class="user-list-item border-bottom">
+                                <div>Phonenumber</div>
+                                <div>@Html.DisplayFor(modelItem => item.Phonenumber)</div>
+                            </li>
+                            <li class="user-list-item border-bottom">
+                                <div>Email</div>
+                                <div>@Html.DisplayFor(modelItem => item.Email)</div>
+                            </li>
+                            <li class="user-list-item border-bottom">
+                                <div>LinkedIn</div>
+                                <div>@Html.DisplayFor(modelItem => item.LinkedIn)</div>
+                            </li>
+                            <li class="user-list-item">
+                                <div>GitHub </div>
+                                <div>@Html.DisplayFor(modelItem => item.GitHub)</div>
+                            </li>
+                        </ul>
+                    </div>
+                }
+            </div>
+        </article>
+        <article class="float-start wrapper mw-50 mh-100">
+            <div class="border bg-white h-100 w-100">
+                <div class="border-bottom">
+                    <div class="mt-4 ms-4">
+                                @if (User.Identity.IsAuthenticated)
+                                {
+                            <a asp-page="./Skills/SkillsIndex">Edit</a>
+                                }
+                                else
+                                {
+                            <p>Log in to edit</p>
+                                }
+                        <h2 class="text-center">Skills</h2>
+                    </div>
+                </div>
+                        @foreach (var item in Model.Skills)
+                        {
+                    <div class="border-bottom">
+                        <ul class="user-list ">
+                            <li class="user-list-item text-center">
+                                <div>
+                                    <h5><u>Skill</u></h5>
+                                </div>
+                                <div>
+                                            @Html.DisplayFor(modelItem => item.Skill)
+                                </div>
+                            </li>
+                            <li class="user-list-item text-center">
+                                <div><u>Description</u></div>
+                                <div>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                        }
+            </div>
+        </article>
+    </div>
+    <div class="container-fluid align-content-center row p-4">
+        <article class="float-start wrapper mw-100 mh-100">
+            <div class="border bg-white h-100 w-100">
+                <div class="border-bottom">
+                    <div class="mt-4 ms-4">
+                                    @if (User.Identity.IsAuthenticated)
+                                    {
+                            <a asp-page="./Experience/ExperienceIndex">Edit</a>
+                                    }
+                                    else
+                                    {
+                            <p>Log in to edit</p>
+                                    }
+                        <h2 class="text-center" ">Experience</h2>
+                </div>
+            </div>
+
+            @for (int i = 0; i < Model.Experiences.Count(); i++)
+            {
+            if ((i % 2) == 0)
+            {
+            var item = Model.Experiences.ElementAt(i);
+            <div class="w-50 float-start border-end">
+                <ul class="user-list text-center">
+                    <li class="user-list-item border-bottom">
+                        <div>
+                            <h5>Company</h5>
+                        </div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Company)
+                        </div>
+                    </li>
+                    <li class="user-list-item">
+                        <div>Employer</div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Employer)
+                        </div>
+                    </li>
+                    <li class="user-list-item">
+                        <div>Description</div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </div>
+                    </li>
+                    <li class="user-list-item">
+                        <div>Start date</div>
+                        <div>@Html.DisplayFor(modelItem => item.StartDate)</div>
+                    </li>
+                    <li class="user-list-item">
+                        <div>End date</div>
+                        <div>@Html.DisplayFor(modelItem => item.EndDate)</div>
+                    </li>
+                </ul>
+            </div>
+            }
+            else
+            {
+            var item = Model.Experiences.ElementAt(i);
+            <div class="w-50 float-start">
+                <ul class="user-list text-center">
+                    <li class="user-list-item border-bottom">
+                        <div>
+                            <h5>Company</h5>
+                        </div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Company)
+                        </div>
+                    </li>
+                    <li class="user-list-item">
+                        <div>Employer</div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Employer)
+                        </div>
+                    </li>
+                    <li class="user-list-item">
+                        <div>Description</div>
+                        <div>
+                            @Html.DisplayFor(modelItem => item.Description)
+                        </div>
+                    </li>
+                    <li class="user-list-item">
+                        <div>Start date</div>
+                        <div>@Html.DisplayFor(modelItem => item.StartDate)</div>
+                    </li>
+                    <li class="user-list-item">
+                        <div>End date</div>
+                        <div>@Html.DisplayFor(modelItem => item.EndDate)</div>
+                    </li>
+                </ul>
+            </div>
+            }
+            }
+
+        </div>
+    </article>
+</div>
