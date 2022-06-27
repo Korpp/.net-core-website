@@ -39,8 +39,13 @@ namespace MyWebPage.Pages.Admin
                 using (var stream = new FileStream(Path.Combine(_hostenvironment.WebRootPath, "images", FileUpload.FormFile.FileName), FileMode.Create))
                 {
                     await FileUpload.FormFile.CopyToAsync(stream);
+                    var file = new AppFile()
+                    {
+                        FileName = FileUpload.FormFile.FileName
+                    };
+                    _context.AppFiles.Add(file);
                 }
-                using (var memoryStream = new MemoryStream())
+               /* using (var memoryStream = new MemoryStream())
                 {
                     await FileUpload.FormFile.CopyToAsync(memoryStream);
                     if (memoryStream.Length > 2097152)
@@ -49,18 +54,18 @@ namespace MyWebPage.Pages.Admin
                         {
                             FileName = FileUpload.FormFile.FileName
                         };
-                        _context.AppFiles.Add(file);
-                        await _context.SaveChangesAsync();
+                       
                     }
                     else
                     {
                         ModelState.AddModelError("File", "The file is too large.");
                     }
-                }
+                }*/
             }
+
+
            
-
-
+            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
     }
