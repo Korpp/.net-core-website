@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using MyWebPage.Data;
 using MyWebPage.Models;
 using MyWebPage.ViewModel;
@@ -19,17 +20,22 @@ namespace MyWebPage.Pages.Store
         {
             _context = context;
         }
-
-        public IActionResult OnGet()
+        [BindProperty]
+        public IList<AppFile> Files { get; set; } = default!;
+        public async Task<IActionResult> OnGetAsync()
         {
+            if (_context.AppFiles != null)
+            {
+                Files = await _context.AppFiles.ToListAsync();
+            }
             return Page();
         }
 
         [BindProperty]
         public Item Item { get; set; } = default!;
 
-      /*[BindProperty]
-        public FileViewModel FileUpload { get; set; }*/
+        
+
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -38,7 +44,10 @@ namespace MyWebPage.Pages.Store
             {
                 return Page();
             }
-   
+            if (_context.AppFiles != null)
+            {
+                Files = await _context.AppFiles.ToListAsync();
+            }
             _context.Items.Add(Item);
             await _context.SaveChangesAsync();
 

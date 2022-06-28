@@ -34,38 +34,34 @@ namespace MyWebPage.Pages.Admin
             {
                 return Page();
             }
-            if (FileUpload.FormFile != null)
+            //upload file
+            if (FileUpload.FormFile.Length > 0)
             {
                 using (var stream = new FileStream(Path.Combine(_hostenvironment.WebRootPath, "images", FileUpload.FormFile.FileName), FileMode.Create))
                 {
                     await FileUpload.FormFile.CopyToAsync(stream);
+                }
+            }
+            using (var memoryStream = new MemoryStream())
+            {
+                await FileUpload.FormFile.CopyToAsync(memoryStream);
+
+                // Upload the file if less than 2 MB
+                if (memoryStream.Length < 2097152)
+                {
                     var file = new AppFile()
                     {
-                        FileName = FileUpload.FormFile.FileName
+                        FileName = FileUpload.FormFile.FileName,
                     };
                     _context.AppFiles.Add(file);
+
+                    await _context.SaveChangesAsync();
                 }
-               /* using (var memoryStream = new MemoryStream())
+                else
                 {
-                    await FileUpload.FormFile.CopyToAsync(memoryStream);
-                    if (memoryStream.Length > 2097152)
-                    {
-                        var file = new AppFile()
-                        {
-                            FileName = FileUpload.FormFile.FileName
-                        };
-                       
-                    }
-                    else
-                    {
-                        ModelState.AddModelError("File", "The file is too large.");
-                    }
-                }*/
+                    ModelState.AddModelError("File", "The file is too large.");
+                }
             }
-
-
-           
-            await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
     }
